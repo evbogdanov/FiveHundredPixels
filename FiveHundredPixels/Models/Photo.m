@@ -10,4 +10,20 @@
 
 @implementation Photo
 
+- (instancetype)initWithName:(NSString *)name
+               smallImageURL:(NSString *)smallImageURL
+                 bigImageURL:(NSString *)bigImageURL {
+    self = [super init];
+    if (self) {
+        _name = name;
+        _smallImageURL = smallImageURL;
+        _bigImageURL = bigImageURL;
+    }
+    return self;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Photo with name: '%@' and big image: %@", self.name, self.bigImageURL];
+}
+
 @end

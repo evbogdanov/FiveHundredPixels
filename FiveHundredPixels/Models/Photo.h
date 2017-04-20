@@ -10,4 +10,12 @@
 
 @interface Photo : NSObject
 
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *smallImageURL;
+@property (nonatomic, strong, readonly) NSString *bigImageURL;
+
+- (instancetype)initWithName:(NSString *)name
+               smallImageURL:(NSString *)smallImageURL
+                 bigImageURL:(NSString *)bigImageURL;
+
 @end

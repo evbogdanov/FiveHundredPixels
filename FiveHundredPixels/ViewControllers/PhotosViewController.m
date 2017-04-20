@@ -8,6 +8,7 @@
 
 #import "PhotosViewController.h"
 #import "PhotoManager.h"
+#import "Photo.h"
 
 @interface PhotosViewController ()
 
@@ -15,16 +16,22 @@
 
 @implementation PhotosViewController
 
-//- (void)setPhotos:(NSArray *)photos {
-//    _photos = photos;
-//    [self.tableView reloadData];
-//}
+- (void)setPhotos:(NSArray *)photos {
+    _photos = photos;
+    // [self.tableView reloadData];
+
+    for (Photo *photo in _photos) {
+        NSLog(@"%@", photo);
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    PhotoManager *manager = [PhotoManager sharedManager];
-    NSLog(@"consumer key is '%@'", manager.consumerKey);
+    [[PhotoManager sharedManager] searchPhotosByTerm:@"apple"
+                                        withCallback:^(NSArray *photos) {
+        self.photos = photos;
+    }];
 }
 
 @end

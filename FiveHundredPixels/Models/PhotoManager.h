@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSString *consumerKey;
 
 + (PhotoManager *)sharedManager;
+- (void)searchPhotosByTerm:(NSString *)term
+              withCallback:(void(^)(NSArray *photos))callback;
 
 @end
