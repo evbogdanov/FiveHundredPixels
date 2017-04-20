@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64B47D91EA93ED500B4DD3E /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = A64B47D81EA93ED500B4DD3E /* Secrets.plist */; };
+		A64B47DD1EA943E700B4DD3E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B47DC1EA943E700B4DD3E /* Photo.m */; };
+		A64B47E01EA9443D00B4DD3E /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B47DF1EA9443D00B4DD3E /* PhotoManager.m */; };
 		A6E90C2D1EA7F30400E8A59A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E90C2C1EA7F30400E8A59A /* main.m */; };
 		A6E90C301EA7F30400E8A59A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E90C2F1EA7F30400E8A59A /* AppDelegate.m */; };
 		A6E90C381EA7F30400E8A59A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E90C371EA7F30400E8A59A /* Assets.xcassets */; };
@@ -16,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A64B47D81EA93ED500B4DD3E /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		A64B47DB1EA943E700B4DD3E /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Models/Photo.h; sourceTree = "<group>"; };
+		A64B47DC1EA943E700B4DD3E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Models/Photo.m; sourceTree = "<group>"; };
+		A64B47DE1EA9443D00B4DD3E /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoManager.h; path = Models/PhotoManager.h; sourceTree = "<group>"; };
+		A64B47DF1EA9443D00B4DD3E /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoManager.m; path = Models/PhotoManager.m; sourceTree = "<group>"; };
 		A6E90C281EA7F30400E8A59A /* FiveHundredPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveHundredPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E90C2C1EA7F30400E8A59A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6E90C2E1EA7F30400E8A59A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A64B47DA1EA943CE00B4DD3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A64B47DB1EA943E700B4DD3E /* Photo.h */,
+				A64B47DC1EA943E700B4DD3E /* Photo.m */,
+				A64B47DE1EA9443D00B4DD3E /* PhotoManager.h */,
+				A64B47DF1EA9443D00B4DD3E /* PhotoManager.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A6E90C1F1EA7F30400E8A59A = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +77,13 @@
 		A6E90C2A1EA7F30400E8A59A /* FiveHundredPixels */ = {
 			isa = PBXGroup;
 			children = (
+				A64B47DA1EA943CE00B4DD3E /* Models */,
 				A6E90C421EA7F35400E8A59A /* App */,
 				A6E90C451EA7F48800E8A59A /* Storyboards */,
 				A6E90C441EA7F3BD00E8A59A /* ViewControllers */,
 				A6E90C371EA7F30400E8A59A /* Assets.xcassets */,
 				A6E90C3C1EA7F30400E8A59A /* Info.plist */,
+				A64B47D81EA93ED500B4DD3E /* Secrets.plist */,
 			);
 			path = FiveHundredPixels;
 			sourceTree = "<group>";
@@ -154,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64B47D91EA93ED500B4DD3E /* Secrets.plist in Resources */,
 				A6E90C381EA7F30400E8A59A /* Assets.xcassets in Resources */,
 				A6E90C491EA7F4CB00E8A59A /* iPad.storyboard in Resources */,
 				A6E90C471EA7F4B900E8A59A /* iPhone.storyboard in Resources */,
@@ -167,7 +189,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64B47DD1EA943E700B4DD3E /* Photo.m in Sources */,
 				A6E90C301EA7F30400E8A59A /* AppDelegate.m in Sources */,
+				A64B47E01EA9443D00B4DD3E /* PhotoManager.m in Sources */,
 				A6E90C4C1EA7F5BD00E8A59A /* PhotosViewController.m in Sources */,
 				A6E90C2D1EA7F30400E8A59A /* main.m in Sources */,
 			);
@@ -313,6 +337,7 @@
 				A6E90C411EA7F30400E8A59A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

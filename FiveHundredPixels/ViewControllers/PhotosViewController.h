@@ -10,4 +10,6 @@
 
 @interface PhotosViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *photos;
+
 @end
