@@ -9,6 +9,7 @@
 #import "PhotosViewController.h"
 #import "PhotoManager.h"
 #import "Photo.h"
+#import "PhotoViewController.h"
 
 @interface PhotosViewController ()
 
@@ -18,11 +19,7 @@
 
 - (void)setPhotos:(NSArray *)photos {
     _photos = photos;
-    // [self.tableView reloadData];
-
-    for (Photo *photo in _photos) {
-        NSLog(@"%@", photo);
-    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -32,6 +29,32 @@
                                         withCallback:^(NSArray *photos) {
         self.photos = photos;
     }];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.photos.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Photo cell"
+                                                            forIndexPath:indexPath];
+    Photo *photo = self.photos[indexPath.row];
+    cell.textLabel.text = photo.name;
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.smallImageURL]]];
+    return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Show photo"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Photo *photo = self.photos[indexPath.row];
+        PhotoViewController *photoVC = (PhotoViewController *)segue.destinationViewController;
+        photoVC.photo = photo;
+    }
 }
 
 @end

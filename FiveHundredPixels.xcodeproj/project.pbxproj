@@ -10,6 +10,7 @@
 		A64B47D91EA93ED500B4DD3E /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = A64B47D81EA93ED500B4DD3E /* Secrets.plist */; };
 		A64B47DD1EA943E700B4DD3E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B47DC1EA943E700B4DD3E /* Photo.m */; };
 		A64B47E01EA9443D00B4DD3E /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A64B47DF1EA9443D00B4DD3E /* PhotoManager.m */; };
+		A65985C21EAAE4740056F2EB /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65985C11EAAE4740056F2EB /* PhotoViewController.m */; };
 		A6E90C2D1EA7F30400E8A59A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E90C2C1EA7F30400E8A59A /* main.m */; };
 		A6E90C301EA7F30400E8A59A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E90C2F1EA7F30400E8A59A /* AppDelegate.m */; };
 		A6E90C381EA7F30400E8A59A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E90C371EA7F30400E8A59A /* Assets.xcassets */; };
@@ -24,6 +25,8 @@
 		A64B47DC1EA943E700B4DD3E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Models/Photo.m; sourceTree = "<group>"; };
 		A64B47DE1EA9443D00B4DD3E /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoManager.h; path = Models/PhotoManager.h; sourceTree = "<group>"; };
 		A64B47DF1EA9443D00B4DD3E /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoManager.m; path = Models/PhotoManager.m; sourceTree = "<group>"; };
+		A65985C01EAAE4740056F2EB /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = ViewControllers/PhotoViewController.h; sourceTree = "<group>"; };
+		A65985C11EAAE4740056F2EB /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = ViewControllers/PhotoViewController.m; sourceTree = "<group>"; };
 		A6E90C281EA7F30400E8A59A /* FiveHundredPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveHundredPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E90C2C1EA7F30400E8A59A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6E90C2E1EA7F30400E8A59A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 			children = (
 				A6E90C4A1EA7F5BD00E8A59A /* PhotosViewController.h */,
 				A6E90C4B1EA7F5BD00E8A59A /* PhotosViewController.m */,
+				A65985C01EAAE4740056F2EB /* PhotoViewController.h */,
+				A65985C11EAAE4740056F2EB /* PhotoViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				A64B47DD1EA943E700B4DD3E /* Photo.m in Sources */,
 				A6E90C301EA7F30400E8A59A /* AppDelegate.m in Sources */,
 				A64B47E01EA9443D00B4DD3E /* PhotoManager.m in Sources */,
+				A65985C21EAAE4740056F2EB /* PhotoViewController.m in Sources */,
 				A6E90C4C1EA7F5BD00E8A59A /* PhotosViewController.m in Sources */,
 				A6E90C2D1EA7F30400E8A59A /* main.m in Sources */,
 			);
