@@ -36,6 +36,18 @@
 }
 
 
+#pragma mark - Default photo image
+
+- (UIImage *)defaultPhotoImage {
+    static UIImage *image = nil;
+
+    if (!image)
+        image = [UIImage imageNamed:@"photo"];
+
+    return image;
+}
+
+
 #pragma mark - Table
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -51,7 +63,23 @@
                                                             forIndexPath:indexPath];
     Photo *photo = self.photos[indexPath.row];
     cell.textLabel.text = photo.name;
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.smallImageURL]]];
+    cell.imageView.image = [self defaultPhotoImage];
+
+    // Readme:
+    // http://stackoverflow.com/questions/16663618/async-image-loading-from-url-inside-a-uitableview-cell-image-changes-to-wrong
+    dispatch_queue_t requestQueue = dispatch_queue_create("500px photo request", NULL);
+    dispatch_async(requestQueue, ^{
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.smallImageURL]]];
+        if (!image)
+            return;
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UITableViewCell *updatedCell = [tableView cellForRowAtIndexPath:indexPath];
+            if (updatedCell)
+                updatedCell.imageView.image = image;
+        });
+    });
+
     return cell;
 }
 
