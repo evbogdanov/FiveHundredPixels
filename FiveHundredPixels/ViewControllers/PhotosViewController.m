@@ -14,6 +14,7 @@
 @interface PhotosViewController ()
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -28,11 +29,33 @@
 }
 
 
+#pragma mark - Activity indicator
+
+- (void)setupActivityIndicator {
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicatorView = activityIndicatorView;
+    self.tableView.backgroundView = self.activityIndicatorView;
+}
+
+- (void)showActivityIndicator {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.activityIndicatorView startAnimating];
+}
+
+- (void)hideActivityIndicator {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [self.activityIndicatorView stopAnimating];
+}
+
+
 #pragma mark - Life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.searchBar.delegate = self;
+
+    [self setupActivityIndicator];
 }
 
 
@@ -108,9 +131,14 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    // Not interested in previous photos
+    self.photos = nil;
+    [self showActivityIndicator];
+
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
     [[PhotoManager sharedManager] searchPhotosByTerm:searchBar.text withCallback:^(NSArray *photos) {
+        [self hideActivityIndicator];
         self.photos = photos;
     }];
 }
