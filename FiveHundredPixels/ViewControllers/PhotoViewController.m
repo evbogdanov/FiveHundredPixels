@@ -25,8 +25,6 @@
 
 #pragma mark - Getters and setters
 
-#define MAYBE_SET_SCROLLVIEW_SIZE
-
 - (void)setPhoto:(Photo *)photo {
     _photo = photo;
 
