@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Photo.h"
 
-@interface PhotoViewController : UIViewController
+@interface PhotoViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) Photo *photo;
 

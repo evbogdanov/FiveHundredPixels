@@ -14,7 +14,7 @@
 @interface PhotosViewController ()
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -28,14 +28,15 @@
     [self.tableView reloadData];
 }
 
+- (UIActivityIndicatorView *)activityIndicatorView {
+    if (!_activityIndicatorView)
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
-#pragma mark - Activity indicator
-
-- (void)setupActivityIndicator {
-    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.activityIndicatorView = activityIndicatorView;
-    self.tableView.backgroundView = self.activityIndicatorView;
+    return _activityIndicatorView;
 }
+
+
+#pragma mark - Show/hide activity indicator
 
 - (void)showActivityIndicator {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -55,7 +56,7 @@
 
     self.searchBar.delegate = self;
 
-    [self setupActivityIndicator];
+    self.tableView.backgroundView = self.activityIndicatorView;
 }
 
 

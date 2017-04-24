@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,22 +70,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXg-nh-FOk">
-                                <rect key="frame" x="16" y="72" width="343" height="587"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-zv-0O1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LXg-nh-FOk" firstAttribute="top" secondItem="AHk-JR-wul" secondAttribute="bottom" constant="8" symbolic="YES" id="4C0-hh-o6w"/>
-                            <constraint firstItem="XaZ-cH-MLB" firstAttribute="top" secondItem="LXg-nh-FOk" secondAttribute="bottom" constant="8" symbolic="YES" id="7WD-dk-KNF"/>
-                            <constraint firstItem="LXg-nh-FOk" firstAttribute="trailing" secondItem="SZe-7W-ZRT" secondAttribute="trailingMargin" id="Uij-5w-d1w"/>
-                            <constraint firstItem="LXg-nh-FOk" firstAttribute="leading" secondItem="SZe-7W-ZRT" secondAttribute="leadingMargin" id="zvh-g5-gRK"/>
+                            <constraint firstAttribute="trailing" secondItem="JTb-zv-0O1" secondAttribute="trailing" id="LHq-v7-XDi"/>
+                            <constraint firstItem="JTb-zv-0O1" firstAttribute="bottom" secondItem="XaZ-cH-MLB" secondAttribute="top" id="Pgc-bU-aF9"/>
+                            <constraint firstItem="JTb-zv-0O1" firstAttribute="leading" secondItem="SZe-7W-ZRT" secondAttribute="leading" id="Y9i-oy-Jya"/>
+                            <constraint firstItem="JTb-zv-0O1" firstAttribute="top" secondItem="SZe-7W-ZRT" secondAttribute="top" id="qfv-Ft-yBu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Kq3-sU-J9f"/>
                     <connections>
-                        <outlet property="imageView" destination="LXg-nh-FOk" id="J8n-eQ-Xk2"/>
                         <outlet property="nameTitle" destination="Kq3-sU-J9f" id="X0v-2s-nZT"/>
+                        <outlet property="scrollView" destination="JTb-zv-0O1" id="9JD-QK-8Bb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1tt-FJ-yDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
