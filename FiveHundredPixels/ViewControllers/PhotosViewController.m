@@ -126,6 +126,10 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    // Clear everything
+    self.photos = nil;
+    searchBar.text = nil;
+
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
 }
@@ -135,8 +139,17 @@
     self.photos = nil;
     [self showActivityIndicator];
 
-    [searchBar setShowsCancelButton:NO animated:YES];
+    // Cancel button should stay enabled
     [searchBar resignFirstResponder];
+    for (UIView *view in searchBar.subviews) {
+        for (id subview in view.subviews) {
+            if ( [subview isKindOfClass:[UIButton class]] ) {
+                [subview setEnabled:YES];
+                break;
+            }
+        }
+    }
+
     [[PhotoManager sharedManager] searchPhotosByTerm:searchBar.text withCallback:^(NSArray *photos) {
         [self hideActivityIndicator];
         self.photos = photos;
