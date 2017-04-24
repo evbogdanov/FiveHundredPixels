@@ -139,21 +139,24 @@
     self.photos = nil;
     [self showActivityIndicator];
 
-    // Cancel button should stay enabled
-    [searchBar resignFirstResponder];
-    for (UIView *view in searchBar.subviews) {
-        for (id subview in view.subviews) {
-            if ( [subview isKindOfClass:[UIButton class]] ) {
-                [subview setEnabled:YES];
-                break;
-            }
-        }
-    }
+    [self hideKeyboardAndKeepCancelButtonEnabled:searchBar];
 
     [[PhotoManager sharedManager] searchPhotosByTerm:searchBar.text withCallback:^(NSArray *photos) {
         [self hideActivityIndicator];
         self.photos = photos;
     }];
+}
+
+- (void)hideKeyboardAndKeepCancelButtonEnabled:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    for (UIView *view in searchBar.subviews) {
+        for (id subview in view.subviews) {
+            if ( [subview isKindOfClass:[UIButton class]] ) {
+                [subview setEnabled:YES];
+                return;
+            }
+        }
+    }
 }
 
 @end
