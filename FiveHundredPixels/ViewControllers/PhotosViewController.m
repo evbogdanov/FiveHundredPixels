@@ -13,23 +13,30 @@
 
 @interface PhotosViewController ()
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @end
 
 @implementation PhotosViewController
+
+
+#pragma mark - Setters and getters
 
 - (void)setPhotos:(NSArray *)photos {
     _photos = photos;
     [self.tableView reloadData];
 }
 
+
+#pragma mark - Life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [[PhotoManager sharedManager] searchPhotosByTerm:@"apple"
-                                        withCallback:^(NSArray *photos) {
-        self.photos = photos;
-    }];
+    self.searchBar.delegate = self;
 }
+
+
+#pragma mark - Table
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -48,6 +55,9 @@
     return cell;
 }
 
+
+#pragma mark - Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Show photo"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -55,6 +65,26 @@
         PhotoViewController *photoVC = (PhotoViewController *)segue.destinationViewController;
         photoVC.photo = photo;
     }
+}
+
+
+#pragma mark - Search bar
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [searchBar resignFirstResponder];
+    [[PhotoManager sharedManager] searchPhotosByTerm:searchBar.text withCallback:^(NSArray *photos) {
+        self.photos = photos;
+    }];
 }
 
 @end

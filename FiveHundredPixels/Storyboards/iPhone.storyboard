@@ -51,6 +51,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Photos" id="KT7-8P-hq5"/>
+                    <connections>
+                        <outlet property="searchBar" destination="DGb-ai-wkW" id="nFH-hC-uap"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVQ-Dt-ib4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

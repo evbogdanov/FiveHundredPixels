@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotosViewController : UITableViewController
+@interface PhotosViewController : UITableViewController <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *photos;
 
