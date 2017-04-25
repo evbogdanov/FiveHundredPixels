@@ -27,11 +27,7 @@
 
 - (void)setPhoto:(Photo *)photo {
     _photo = photo;
-
-    NSURL *URL = [NSURL URLWithString:self.photo.bigImageURL];
-    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:URL]];
-
-    [self maybeSetScrollViewContentSize];
+    [self downloadImage];
 }
 
 - (void)setScrollView:(UIScrollView *)scrollView {
@@ -56,6 +52,7 @@
 - (void)setImage:(UIImage *)image {
     self.imageView.image = image;
     [self.imageView sizeToFit];
+    [self maybeSetScrollViewContentSize];
 }
 
 
@@ -78,9 +75,31 @@
 #pragma mark - Helpers
 
 - (void)maybeSetScrollViewContentSize {
-    // Hot it works:
+    // How it works:
     // https://www.youtube.com/watch?v=LdTEO7mKaMk&t=47m30s
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+}
+
+- (void)downloadImage {
+    self.image = nil;
+
+    if (!self.photo)
+        return;
+
+    // 'Old' URL to download. Might be different when downloading is finished.
+    NSString *URLString = self.photo.bigImageURL;
+
+    dispatch_queue_t downloadQueue = dispatch_queue_create("500px download image", NULL);
+    dispatch_async(downloadQueue, ^{
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:URLString]]];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.photo && [URLString isEqualToString:self.photo.bigImageURL]) {
+                // Set image only if it matches the 'old' photo.
+                self.image = image;
+            }
+        });
+    });
 }
 
 @end
