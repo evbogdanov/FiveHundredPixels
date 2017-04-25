@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *nameTitle;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) UIImageView *imageView;
 
 @property (strong, nonatomic) UIImage *image; // Image is not really a property.
@@ -53,6 +54,7 @@
     self.imageView.image = image;
     [self.imageView sizeToFit];
     [self maybeSetScrollViewContentSize];
+    [self.activityIndicatorView stopAnimating];
 }
 
 
@@ -85,6 +87,8 @@
 
     if (!self.photo)
         return;
+
+    [self.activityIndicatorView startAnimating];
 
     // 'Old' URL to download. Might be different when downloading is finished.
     NSString *URLString = self.photo.bigImageURL;

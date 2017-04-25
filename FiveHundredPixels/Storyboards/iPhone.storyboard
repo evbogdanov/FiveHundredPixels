@@ -70,20 +70,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-eD-3G6">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-zv-0O1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6QO-eD-3G6" firstAttribute="centerY" secondItem="JTb-zv-0O1" secondAttribute="centerY" id="85Z-2N-X4C"/>
                             <constraint firstAttribute="trailing" secondItem="JTb-zv-0O1" secondAttribute="trailing" id="LHq-v7-XDi"/>
                             <constraint firstItem="JTb-zv-0O1" firstAttribute="bottom" secondItem="XaZ-cH-MLB" secondAttribute="top" id="Pgc-bU-aF9"/>
                             <constraint firstItem="JTb-zv-0O1" firstAttribute="leading" secondItem="SZe-7W-ZRT" secondAttribute="leading" id="Y9i-oy-Jya"/>
                             <constraint firstItem="JTb-zv-0O1" firstAttribute="top" secondItem="SZe-7W-ZRT" secondAttribute="top" id="qfv-Ft-yBu"/>
+                            <constraint firstItem="6QO-eD-3G6" firstAttribute="centerX" secondItem="JTb-zv-0O1" secondAttribute="centerX" id="szw-w1-BR7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Kq3-sU-J9f"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="6QO-eD-3G6" id="GAZ-yf-3LP"/>
                         <outlet property="nameTitle" destination="Kq3-sU-J9f" id="X0v-2s-nZT"/>
                         <outlet property="scrollView" destination="JTb-zv-0O1" id="9JD-QK-8Bb"/>
                     </connections>
