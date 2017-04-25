@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="940" y="-184.85757121439281"/>
         </scene>
-        <!--Title-->
+        <!--Photo View Controller-->
         <scene sceneID="r5E-j6-SDq">
             <objects>
                 <viewController id="Gv8-tf-W26" customClass="PhotoViewController" sceneMemberID="viewController">
@@ -87,10 +87,8 @@
                             <constraint firstItem="6QO-eD-3G6" firstAttribute="centerX" secondItem="JTb-zv-0O1" secondAttribute="centerX" id="szw-w1-BR7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Kq3-sU-J9f"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="6QO-eD-3G6" id="GAZ-yf-3LP"/>
-                        <outlet property="nameTitle" destination="Kq3-sU-J9f" id="X0v-2s-nZT"/>
                         <outlet property="scrollView" destination="JTb-zv-0O1" id="9JD-QK-8Bb"/>
                     </connections>
                 </viewController>

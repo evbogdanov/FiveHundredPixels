@@ -10,7 +10,6 @@
 
 @interface PhotoViewController ()
 
-@property (weak, nonatomic) IBOutlet UINavigationItem *nameTitle;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) UIImageView *imageView;
@@ -28,6 +27,7 @@
 
 - (void)setPhoto:(Photo *)photo {
     _photo = photo;
+    self.title = photo.name;
     [self downloadImage];
 }
 
@@ -51,8 +51,9 @@
 }
 
 - (void)setImage:(UIImage *)image {
+    self.scrollView.zoomScale = 1.0;
     self.imageView.image = image;
-    [self.imageView sizeToFit];
+    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     [self maybeSetScrollViewContentSize];
     [self.activityIndicatorView stopAnimating];
 }
@@ -62,7 +63,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nameTitle.title = self.photo.name;
     [self.scrollView addSubview:self.imageView];
 }
 
@@ -104,6 +104,40 @@
             }
         });
     });
+}
+
+
+#pragma mark - iPad portrait mode and master view
+
+- (void)showLeftBarButtonItem {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Photos"
+                                                             style:self.splitViewController.displayModeButtonItem.style
+                                                            target:self.splitViewController.displayModeButtonItem.target
+                                                            action:self.splitViewController.displayModeButtonItem.action];
+    self.navigationItem.leftBarButtonItem = item;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.splitViewController.delegate = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    if (self.splitViewController.displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [self showLeftBarButtonItem];
+    }
+}
+
+-(void)splitViewController:(UISplitViewController *)svc
+   willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
+    if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [self showLeftBarButtonItem];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
 }
 
 @end

@@ -107,6 +107,19 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Will be nil on iPhone.
+    id detail = self.splitViewController.viewControllers[1];
+
+    if ([detail isKindOfClass:[UINavigationController class]]) {
+        detail = [((UINavigationController *)detail).viewControllers firstObject];
+    }
+
+    if ([detail isKindOfClass:[PhotoViewController class]]) {
+        PhotoViewController *photoVC = (PhotoViewController *)detail;
+        photoVC.photo = self.photos[indexPath.row];
+    }
+}
 
 #pragma mark - Segue
 
